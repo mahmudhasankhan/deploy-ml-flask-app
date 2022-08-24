@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Signin Template · Bootstrap v5.2</title>
+    <title>Sentiment Classifier</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
 
@@ -76,25 +76,41 @@
     <!-- Custom styles for this template -->
     <link href="/static/css/signin.css" rel="stylesheet">
   </head>
-  <body class="text-center">
-    
-<main class="form-signin w-100 m-auto">
-  <form action="/", method="POST">
-    <h1 class="h2 mb-3 fw-normal">Sentiment Classifier</h1>
-
-    <div class="form-floating">
-      <input type="text" name="input_text" class="form-control" id="floatingInput" placeholder="Enter your text here.">
-      <label for="floatingInput">Enter a text</label>
+  <body class="text-center">        
+    <div class="container">
+      <div class="col">
+        <div class="row-4 row-md-2 row-lg-1">
+          <div class="text-justify">
+            <h1 class="display-3 font-weight-bold">Sentiment Classifier</h1>
+            <p class="lead">A Transformer based Sentiment Classifier that can predict three distinct senitments: <strong>Pro-Russia</strong>, <strong>Neutral</strong> and <strong>Pro-Ukraine</strong> on <strong>Bangla</strong> comments about the ongoing Russia-Ukraine War.</p>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="card mb-3 w-50">
+              <div class="card-body">
+                <h3 class="main-text">Make Prediction</h1>
+                  <div class="form-signin w-100 m-auto">
+                    <form action="/", method="POST">
+                      <div class="form-floating">
+                        <input type="text" name="input_text" class="form-control" id="floatingInput"      placeholder="Enter your text here.">
+                        <label for="floatingInput">Enter a text</label>
+                      </div>
+                      <button class="btn btn-danger mt-3" type="submit">Predict</button>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          </div>
+          {% if output %}
+          <div class="d-flex justify-content-center">
+            <div class="card mb-3 w-30">
+              <div class="card-body">
+                <h3 class="card-title">Sentiment: {{ output }}</h3>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
     </div>
-    <button class="btn btn-primary mt-3" type="submit">Predict</button>
-  </form>
-
-  {% if output %}
-    <p class="text-center"> Sentiment is {{ output }}</p>
-  {% endif %}      
-</main>
-
-
-    
   </body>
 </html>

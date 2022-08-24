@@ -2,7 +2,6 @@ from flask import Flask
 from flask import render_template, request
 from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
-import numpy as np
 import torch
 app = Flask(__name__)
 
@@ -30,15 +29,16 @@ def predict():
     output = model(**encoded_input)
     _, pred = torch.max(output.logits, dim=1)
     pred = pred.detach().cpu().numpy()
+    
     print(pred)
     if pred==0:
-        return render_template('index.html', output='neutral')
+        return render_template('index.html', output='Neutral')
     elif pred==1:
-        return render_template('index.html', output='positive')
+        return render_template('index.html', output='Pro-Ukraine')
     elif pred==2:
-        return render_template('index.html', output='negative')
+        return render_template('index.html', output='Pro-Russia')
     else:
-        return render_template('index.html', output='unpredictable') 
+        return render_template('index.html', output='Unpredictable') 
 
 # if __name__ == '__main__':
 #     app.run(port=5000, debug=True)
