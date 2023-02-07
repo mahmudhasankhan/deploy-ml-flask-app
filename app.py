@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
-PRE_TRAINED_MODEL_NAME = 'xlm-roberta-base'
+PRE_TRAINED_MODEL_NAME = 'csebuetnlp/banglabert'
 tokenizer = AutoTokenizer.from_pretrained(PRE_TRAINED_MODEL_NAME)
 model = AutoModelForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL_NAME, num_labels = 3)
 model_path = r'E:\BanglaSent-SavedModels\Models\banglabert_5e-5_8eps_32.pth'
