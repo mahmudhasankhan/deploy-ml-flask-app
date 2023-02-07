@@ -10,7 +10,7 @@ print(device)
 PRE_TRAINED_MODEL_NAME = 'xlm-roberta-base'
 tokenizer = AutoTokenizer.from_pretrained(PRE_TRAINED_MODEL_NAME)
 model = AutoModelForSequenceClassification.from_pretrained(PRE_TRAINED_MODEL_NAME, num_labels = 3)
-model_path = r'E:\BanglaSent-SavedModels\saved-models\xlm_roberta_base_final.pt'
+model_path = r'E:\BanglaSent-SavedModels\Models\banglabert_5e-5_8eps_32.pth'
 checkpoint = torch.load(model_path)
 model.load_state_dict(checkpoint)
 model = model.to(device)
